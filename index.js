@@ -9,9 +9,9 @@ const { log } = require('./log');
 
 try {
     let file = fs.readFileSync(path.join(__dirname, 'views', 'partials', 'head.ejs'), 'utf8');
-    file = file.replace("replaceME", `https://dashboard-thluon.herokuapp.com:${port}`);
+    file = file.replace("replaceME", `http://dashboard-thluon.herokuapp.com:${port}`);
     fs.writeFileSync(path.join(__dirname, 'views', 'partials', 'head.ejs'), file, { encoding: 'utf8' });
-    log(`set base url to https://dashboard-thluon.herokuapp.com:${port}`, 'SYSTEM');
+    log(`set base url to http://dashboard-thluon.herokuapp.com:${port}`, 'SYSTEM');
 } catch (error) {
     log(error, 'error');
     console.log(error);
