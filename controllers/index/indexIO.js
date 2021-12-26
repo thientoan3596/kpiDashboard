@@ -248,6 +248,7 @@ module.exports = function (io) {
         // io.to('broadcast').emit('hourlyproductionData', { data: newRecord });
         get._24HoursProduction()
             .then((result) => {
+                console.log('24hour updated');
                 io.to('broadcast').emit('hourlyproductionData', { data: result });
             }).catch((err) => {
                 console.log(err);

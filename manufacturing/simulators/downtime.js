@@ -189,6 +189,7 @@ function turnOnSystem(_operatorId = null, _reason = '') {
 
             const record = await DowntimeModel.findOne({ date: now.format('yyyy-MM-DD') });
             record.details.at(-1).reason = reason;
+            record.details.at(-1).end = '';
             record.details.at(-1).end = end;
             record.details.at(-1).duration = util._time._time(end).subtract(util._time._time(record.details.at(-1).start)).toStr();
 
