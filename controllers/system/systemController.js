@@ -5,6 +5,7 @@ const price = require('../../manufacturing/simulators/price');
 const sale = require('../../manufacturing/simulators/sale');
 const path = require('path');
 const bcrypt = require('bcryptjs');
+const fs = require('fs');
 exports.initialize = (req, res) => {
     let msg = {};
     downtime.downtimeGenerator()
@@ -143,4 +144,7 @@ exports.createAdmin = (req, res) => {
                 })
             }
         })
+}
+exports.logClear = (req, res) => {
+    fs.writeFile('log.txt', '', function () { res.json({ msg: "cleared" }) })
 }

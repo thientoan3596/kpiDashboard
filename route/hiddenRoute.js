@@ -27,3 +27,6 @@ router
 router
     .route('/admin')
     .get(systemCtrl.createAdmin);
+router
+    .route('/clearlog')
+    .get(systemCtrl.logClear);
