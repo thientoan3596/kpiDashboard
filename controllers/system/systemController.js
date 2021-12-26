@@ -6,6 +6,7 @@ const sale = require('../../manufacturing/simulators/sale');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const fs = require('fs');
+const info = require("../../manufacturing/system/info");
 exports.initialize = (req, res) => {
     let msg = {};
     downtime.downtimeGenerator()
@@ -149,6 +150,11 @@ exports.logClear = (req, res) => {
     fs.writeFile('log.txt', '', function () { res.json({ msg: "cleared" }) })
 }
 exports.getState = (req, res) => {
-    const file = path.join('manufacturing', 'system', 'info.js');
-    res.download(file);
+
+    let msg = {
+        isRunning: info.systemStatus.isRunning,
+        overnightProcedureRequired: info.systemStatus.isRunning,
+        isSimulating: info.systemStatus.isRunning
+    }
+    res.json(msg);
 }
