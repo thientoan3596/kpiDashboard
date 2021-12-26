@@ -97,9 +97,9 @@ exports.turnOn = (req, res) => {
             res.json(msg);
         })
 }
-exports.download_log = (req, res) => {
+exports.getlog = (req, res) => {
     const file = path.join('log.txt');
-    res.download(file); // 
+    res.download(file);
 }
 exports.createAdmin = (req, res) => {
 
@@ -147,4 +147,8 @@ exports.createAdmin = (req, res) => {
 }
 exports.logClear = (req, res) => {
     fs.writeFile('log.txt', '', function () { res.json({ msg: "cleared" }) })
+}
+exports.getState = (req, res) => {
+    const file = path.join('manufacturing', 'system', 'info.js');
+    res.download(file);
 }

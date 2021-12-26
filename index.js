@@ -109,19 +109,24 @@ app.get('*', (req, res) => {
 require('dotenv').config();
 function init() {
     let msg = {};
+
     downtime.downtimeSimulate()
         .then(code => {
             msg.downtimeSimulate = code;
+            console.log('downtime: OKE');
             return production.productionSimulate();
         })
         .then(code => {
             msg.productionSimulate = code;
+            console.log('production: OKE');
             msg.message = 'Simulating';
-            log(msg, 'SYSTEM');
+            log(JSON.stringify(msg), 'INIT');
         })
         .catch(err => {
             msg.message = 'Simulating failed';
             msg.error = err;
+        }).finally(() => {
+            console.log("initialized");
+        });
 
-        })
 }

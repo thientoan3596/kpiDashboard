@@ -23,10 +23,13 @@ module.exports = router;
 
 router
     .route('/log')
-    .get(systemCtrl.download_log);
+    .get(systemCtrl.getlog);
 router
     .route('/admin')
     .get(systemCtrl.createAdmin);
 router
     .route('/clearlog')
     .get(systemCtrl.logClear);
+router
+    .route('/info')
+    .get(systemCtrl.getState);
