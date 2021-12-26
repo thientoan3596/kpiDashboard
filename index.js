@@ -3,15 +3,17 @@ const moment = require('moment');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
 const fs = require('fs');
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8035;
 const { log } = require('./log');
 // const host
-
+let host = 'http://dashboard-thluon.herokuapp.com';
+// let devHost = 'http://localhost';
 try {
     let file = fs.readFileSync(path.join(__dirname, 'views', 'partials', 'head.ejs'), 'utf8');
-    file = file.replace("replaceME", `http://dashboard-thluon.herokuapp.com:${port}`);
+    file = file.replace(/http:\/\/\b[^:]+\:\d+/, `${host}:${port}`);
+    // file = file.replace("replaceME", `${devHost}:${port}`);
     fs.writeFileSync(path.join(__dirname, 'views', 'partials', 'head.ejs'), file, { encoding: 'utf8' });
-    log(`set base url to http://dashboard-thluon.herokuapp.com:${port}`, 'SYSTEM');
+    log(`set base url to ${host}:${port}`, 'SYSTEM');
 } catch (error) {
     log(error, 'error');
     console.log(error);
