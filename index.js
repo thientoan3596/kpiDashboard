@@ -13,6 +13,7 @@ try {
     fs.writeFileSync(path.join(__dirname, 'views', 'partials', 'head.ejs'), file, { encoding: 'utf8' });
     log(`set base url to http://dashboard-thluon.herokuapp.com:${port}`, 'SYSTEM');
 } catch (error) {
+    log(error, 'error');
     console.log(error);
 }
 const passport = require('passport');
