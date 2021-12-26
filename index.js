@@ -6,18 +6,18 @@ const fs = require('fs');
 const port = process.env.PORT || 8035;
 const { log } = require('./log');
 // const host
-let host = 'https://dashboard-thluon.herokuapp.com';
-// let devHost = 'http://localhost';
-try {
-    let file = fs.readFileSync(path.join(__dirname, 'views', 'partials', 'head.ejs'), 'utf8');
-    file = file.replace(/https:\/\/\b[^:]+\:\d+/, `${host}:${port}`);
-    // file = file.replace("replaceME", `${devHost}:${port}`);
-    fs.writeFileSync(path.join(__dirname, 'views', 'partials', 'head.ejs'), file, { encoding: 'utf8' });
-    log(`set base url to ${host}:${port}`, 'SYSTEM');
-} catch (error) {
-    log(error, 'error');
-    console.log(error);
-}
+// let host = 'https://dashboard-thluon.herokuapp.com';
+// let devHost = 'https://localhost';
+// try {
+//     let file = fs.readFileSync(path.join(__dirname, 'views', 'partials', 'head.ejs'), 'utf8');
+//     file = file.replace(/https:\/\/\b[^:]+\:\d+/, `${devHost}:${port}`);
+//     // file = file.replace("replaceME", `${devHost}:${port}`);
+//     fs.writeFileSync(path.join(__dirname, 'views', 'partials', 'head.ejs'), file, { encoding: 'utf8' });
+//     log(`set base url to ${devHost}:${port}`, 'SYSTEM');
+// } catch (error) {
+//     log(error, 'error');
+//     console.log(error);
+// }
 const passport = require('passport');
 const session = require('express-session');
 const express = require('express');
@@ -107,9 +107,6 @@ app.get('*', (req, res) => {
 })
 
 require('dotenv').config();
-// const PORT = process.env.PORT;
-// const Host = process.env.HOST;
-// const server = app.listen(PORT, Host, () => console.log(`Server started at: http://${Host}:${PORT}`));
 function init() {
     let msg = {};
     downtime.downtimeSimulate()

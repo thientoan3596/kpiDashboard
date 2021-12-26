@@ -34,7 +34,11 @@ socket.on("systemOffline", r => {
 
 socket.on("notifications", data => {
     data.notifications.notifications.forEach(n => {
-        util.setNotification(n.notificationID.msg + "<br> by " + n.notificationID.by.username, n.notificationID._time, n.isRead, n._id, socket);
+        if (n.notificationID.by !== null) {
+            util.setNotification(n.notificationID.msg + "<br> by " + n.notificationID.by.username, n.notificationID._time, n.isRead, n._id, socket);
+        } else {
+            util.setNotification(n.notificationID.msg + "<br> by Admin", n.notificationID._time, n.isRead, n._id, socket);
+        }
     });
     util.notificationUpdate();
 });
