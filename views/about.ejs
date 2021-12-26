@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./partials/head.ejs",{title:"Dashboard|About"}) %>
+
+<body>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <%- include("./partials/sidebar.ejs",{page:"about"}) %>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Topbar -->
+                <%- include("./partials/topbar.ejs") %>
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">About</h1>
+                    </div>
+                    <!-- Content Row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-4 shadow">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">About Me</h6>
+                                </div>
+                                <div class="card-body text-justify mb-4">
+                                    My name is <b>Lương Thiện Toàn</b> and I'm from Vietnam- a beautiful southeast
+                                    country. <br>
+                                    At the moment, I'm a student of Taltech University, Estonia and my major is
+                                    Intergrated Engineering. This is my final year of study and I'm 100% of my strength
+                                    on the thesis.
+                                </div>
+                            </div>
+                            <div class="card mb-4 shadow">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">General Info</h6>
+                                </div>
+                                <div class="card-body text-justify">
+                                    This site is a demonstration of a KPI dashboard in manufacturing.
+                                    With some more adminstration features to control the manufacturing system.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card shadow mb-3">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">KPI Dashboard</h6>
+                                </div>
+                                <div class="card-body text-justify">
+                                    KPI Dashboar is an author's Project for University Thesis. The project is about
+                                    selecting key metrics and
+                                    designing those metrics for a proper decision during manufacturing. <br>
+                                    However, with the limitation of manufacturing data, author has built up
+                                    a generating and simulating system which help designing easier.
+                                    All the data in this project is generated randomly, and is simulated by the server.
+                                    Beside dashboard, the project also contains
+                                    functions to administrate the manufacturing. <br>Please find the related document
+                                    for
+                                    the usage of the dashboard and system setting.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <%- include("./partials/footer.ejs") %>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- Modals -->
+        <%- include('./partials/logoutModal.ejs') %>
+        <!-- End of Content Wrapper -->
+        <%- include('./partials/publicAssets.ejs') %>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./partials/head.ejs",{title:"Dashboard | Control"}) %>
+
+<body>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <%- include('./partials/sidebar.ejs',{page:'admin'}) %>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+                <%- include("./partials/topbar.ejs") %>
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        <div class="col-xl-8 col-md-9">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary text-center">Main Controller</h6>
+                                </div>
+                                <div class="card-body px-0 ">
+                                    <div class="row">
+                                        <!-- System control Card -->
+                                        <div class="col-6">
+                                            <div class="card shadow mb-4">
+                                                <div class="card-header py-3 bg-primary">
+                                                    <h6 class="m-0 font-weight-bold text-light text-center">System
+                                                    </h6>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-6 d-flex justify-content-center">
+                                                            <a href="#" class="btn btn-circle btn-lg btn-primary"
+                                                                data-toggle="modal" data-target="#onSysModal">on</a>
+                                                        </div>
+                                                        <div class="col-6 d-flex justify-content-center">
+                                                            <a href="#" class="btn btn-circle btn-lg btn-warning"
+                                                                data-toggle="modal" data-target="#offSysModal">off</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Price List Card -->
+                                        <div class="col-6">
+                                            <div class="card shadow mb-4">
+                                                <div class="card-header py-3 bg-primary">
+                                                    <h6 class="m-0 font-weight-bold text-light text-center">Price List
+                                                    </h6>
+                                                </div>
+                                                <div class="card-body d-flex justify-content-center">
+                                                    <a href="#" class="btn btn-lg btn-primary" data-toggle="modal"
+                                                        data-target="#priceListUpdateModal"
+                                                        id="btn-update-price-list-modal-open">Update</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col">
+
+                                                </div>
+                                                <div class="col">
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-3">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary text-center">Status</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6 text-left">
+                                            System
+                                        </div>
+                                        <div class="col-6 text-right">
+                                            <i class="fas fa-circle"></i>
+                                            online
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <%- include("./partials/footer.ejs") %>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+
+    </div>
+    <!-- Modals -->
+    <%- include('./partials/logoutModal.ejs') %>
+    <!-- Turn off system modal -->
+    <div class="modal fade" id="offSysModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Do you want to turn <b>off</b> the system ?</h5>
+                    <!-- <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button> -->
+                </div>
+                <!-- <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div> -->
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger" data-dismiss="modal" href="#" id="btn-turn-off-system">Yes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Turn on system modal -->
+    <div class="modal fade" id="onSysModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Please select the reason for the last downtime?</h5>
+                    <!-- <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button> -->
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <h3>Reason:</h3>
+                        </div>
+                        <div class="col-9 ">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="radio" id="service" name="reason" value="service">
+                                        <label for="service">Service</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="radio" id="brokenMachine" name="reason" value="brokenMachine">
+                                        <label for="brokenMachine">Broken Machine</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="radio" id="other" name="reason" value="other">
+                                        <label for="other">Other</label>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="radio" id="uncategozied" name="reason" value="uncategozied">
+                                        <label for="uncategozied">Uncategozied</label>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-danger" type="button" data-dismiss="modal" id="btn-turn-on-system"
+                        disabled>yes</button>
+                    <!-- <a class="btn btn-danger" data-dismiss="modal" href="#" id="btn-turn-on-system" disabled>Yes</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Price list update modal -->
+    <div class="modal fade" id="priceListUpdateModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Price list</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="price-list-update-form">
+
+                        <div class="row">
+                            <div class="col-9">
+                                <label for="material">Raw Material</label>
+                            </div>
+                            <div class="col-3">
+                                <input type="text" inputmode="numeric" name="priceList" id="material" step="0.01"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-9">
+                                <label for="paint">Paint</label>
+                            </div>
+                            <div class="col-3">
+                                <input type="text" inputmode="numeric" name="priceList" id="paint" step="0.01"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-9">
+                                <label for="box">Box </label>
+                            </div>
+                            <div class="col-3">
+                                <input type="text" inputmode="numeric" name="priceList" id="box" step="0.01"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-9">
+                                <label for="toolReplace">Tool Replacement (Per Product Per Proccess)</label>
+                            </div>
+                            <div class="col-3">
+                                <input type="text" inputmode="numeric" name="priceList" id="toolReplace" step="0.01"
+                                    class="form-control input-sm">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-9">
+                                <label for="labour">Labour Cost (Per Person Per Hour)</label>
+                            </div>
+                            <div class="col-3">
+                                <input type="text" inputmode="numeric" name="priceList" id="labour" step="0.01"
+                                    class="form-control input-sm">
+                            </div>
+                        </div>
+                    </form>
+                    <hr>
+                    <div class="text-center" style="font-size: 75%;">Time Sync: <span id="timeSync"></span></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+
+                    <button class="btn btn-danger" data-dismiss="modal" href="#" id="btn-update-price-list"
+                        disabled>Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./public/js/adminboardIO.js"></script>
+    <%- include("./partials/publicAssets.ejs") %>
+</body>
+
+</html>

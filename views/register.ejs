@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./partials/head.ejs",{title:"register"}) %>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+
+                    <div class="col">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            </div>
+                            <% for (err in errors) { %>
+                            <div class="alert alert-warning alert-dismissable fade show" role='alert'>
+                                <%= errors[err]%>
+                                <button class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <% } %>
+                            <form class="user" action="/users/register" method="POST">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" name="username"
+                                            id="username" placeholder="Username"
+                                            value="<%= typeof username !='undefined'? username:''  %>">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" name="verifyCode"
+                                            id="verifyCode" placeholder="Verify Code"
+                                            value="<%= typeof verifyCode !='undefined'? verifyCode:''  %>">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" name="firstName"
+                                            id="firstName" placeholder="First Name"
+                                            value="<%= typeof firstName !='undefined'? firstName:''  %>">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" name="lastName"
+                                            id="lastName" placeholder="Last Name"
+                                            value="<%= typeof lastName !='undefined'? lastName:''  %>">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password" class="form-control form-control-user" id="inputPassword"
+                                            name="inputPassword" placeholder="Password"
+                                            value="<%= typeof inputPassword !='undefined'? inputPassword:''  %>">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="repeatPassword" name="repeatPassword" placeholder="Repeat Password"
+                                            value="<%= typeof repeatPassword !='undefined'? repeatPassword:''  %>">
+                                    </div>
+                                </div>
+                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Sign up">
+                                <!-- <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                    Register Account
+                                </a> -->
+
+                            </form>
+                            <hr>
+                            <div class="text-right"><a class="btn btn-lg btn-white text-primary" href="index">Home</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="/users/login">Already have an account? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <!-- general custome script -->
+    <%- include("./partials/publicAssets.ejs") %>
+
+</body>
+
+</html>

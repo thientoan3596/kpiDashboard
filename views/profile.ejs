@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./partials/head.ejs",{title:"Dashboard|Profile"}) %>
+
+<body>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <%- include("./partials/sidebar.ejs",{page:'index'}) %>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+                <%- include("./partials/topbar.ejs") %>
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Profile</h1>
+                    </div>
+                    <%- include("./partials/notification.ejs") %>
+                    <!-- Content Row -->
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4">
+                                    Username:
+                                </div>
+                                <div class="col-6 text-right">
+                                    <%= user.username %>
+                                </div>
+                                <div class="col-2">
+                                    <a href="#" id="btn-change-username">Change</a>
+                                </div>
+                            </div>
+                            <form action="/users/profile/changeusername" method="POST" class="mt-5"
+                                style="display: none;" id="form-username-change">
+                                <div class="row">
+                                    <div class="col-6 d-flex justify-content-center">
+                                        <input type="text" name="username" id="username" placeholder="New username"
+                                            class="group-control">
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-center">
+                                        <input type="password" name="password" id="passwrod"
+                                            placeholder="Confirm your password" class="group-control">
+                                    </div>
+                                </div>
+                                <div class="row pt-5">
+                                    <div class="col-6 d-flex justify-content-center">
+                                        <input type="submit" value="Submit" class="btn btn-primary">
+                                    </div>
+                                    <div class="col-6 text-center">
+                                        <a href="#" class="btn btn-secondary" id="btn-cancel-username">Cancel</a>
+                                    </div>
+                                </div>
+
+                            </form>
+                            <div class="row pt-3" id="name-section">
+                                <div class="col">
+                                    <span style="font-size: 75%;">Created
+                                        at:
+                                        <%= user.createdAt %></span>
+                                </div>
+                            </div>
+                            <hr class="mt-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    First Name:
+                                </div>
+                                <div class="col-6 text-right">
+                                    <%= user.fname %>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    Last name:
+                                </div>
+                                <div class="col-6 text-right">
+                                    <%= user.lname %>
+                                </div>
+
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <button class="btn btn-primary" id="btn-change-password">Change password</button>
+                                    <!-- <a href="#" class="btn btn-primary" id="btn-change-password">Change password</a> -->
+                                    <form action="/users/profile/changepassword" method="POST" style="display: none;"
+                                        id="form-password-change">
+                                        <div class="row">
+                                            <div class="col-6 d-flex justify-content-center">
+                                                <input type="password" name="inputPassword" id="inputPassword"
+                                                    placeholder="New Password" class="group-control">
+                                            </div>
+                                            <div class="col-6 d-flex justify-content-center">
+                                                <input type="password" name="repeatPassword" id="repeatPassword"
+                                                    placeholder="Confirm your password" class="group-control">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-6 d-flex justify-content-center">
+                                                <input type="password" name="oldPassword" id="oldPassword"
+                                                    placeholder="Your current password" class="group-control">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-6 d-flex justify-content-center">
+                                                <input type="submit" value="Submit" class="btn btn-primary">
+                                            </div>
+                                            <div class="col-6 d-flex justify-content-center">
+                                                <a href="#" class="btn btn-secondary"
+                                                    id="btn-cancel-password">Cancel</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col">
+                                    last update: <%= user.lastUpdate %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+            <!-- Modals -->
+            <%- include('./partials/logoutModal.ejs') %>
+            <!-- Footer -->
+            <%- include('./partials/footer.ejs') %>
+            <!-- End of Footer -->
+
+        </div>
+        <%- include('./partials/publicAssets.ejs') %>
+        <script src="./public/js/profile.js"></script>
+    </div>
+</body>
+
+</html>

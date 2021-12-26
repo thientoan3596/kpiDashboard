@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./partials/head.ejs",{title:"Dashboard"}) %>
+
+<body>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <%- include("./partials/sidebar.ejs",{page:'index'}) %>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+                <%- include("./partials/topbar.ejs") %>
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    </div>
+                    <%- include("./partials/notification.ejs") %>
+                    <!-- Downtime and status -->
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12">
+                            <div class="row">
+                                <!-- downtime -->
+                                <div class="col-xl-6 col-lg-12 mb-4 order-1">
+                                    <div class="card border-left-warning shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div
+                                                        class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                        Downtime This Month</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800 text-center"
+                                                        id='downtime_this_month'>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Current status -->
+                                <div class="col-xl-6 col-lg-12 mb-4">
+                                    <div class="card border-left-info shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div
+                                                        class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                        Current Status</div>
+                                                    <div class="row">
+                                                        <div class="col text-center">
+
+                                                            <div class="h4 mb-0 font-weight-bold text-gray-800 "><i
+                                                                    class="fas fa-circle" id='status_indicator'></i>
+                                                                <span id='system_status'>123</span>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- Financial Boards -->
+                                <div class="col">
+                                    <div class="card shadow mb-4">
+                                        <!-- Card Body -->
+                                        <div class="card-body" id="financialBoard">
+                                            <div class="row">
+                                                <!-- Revenue This Month -->
+                                                <div class="col-md-16 col-lg-6 mb-4">
+                                                    <div class="card border-left-primary shadow h-100 py-2">
+                                                        <div class="card-body">
+                                                            <div class="row no-gutters align-items-center">
+                                                                <div class="col mr-2">
+                                                                    <div
+                                                                        class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                                        Revenue (This month)</div>
+                                                                    <div class="h5 mb-0 font-weight-bold text-gray-800 text-center tt"
+                                                                        id='revenue_this_month' title=""
+                                                                        style="cursor: pointer;"
+                                                                        data-placement="bottom">
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Revenue last month -->
+                                                <div class="col-md-12 col-lg-6  mb-4">
+                                                    <div class="card border-left-success shadow h-100 py-2">
+                                                        <div class="card-body">
+                                                            <div class="row no-gutters align-items-center">
+                                                                <div class="col mr-2">
+                                                                    <div
+                                                                        class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                                        Revenue (last month)</div>
+                                                                    <div class="h5 mb-0 font-weight-bold text-gray-800 text-center tt"
+                                                                        title="" style="cursor: pointer;"
+                                                                        data-placement="bottom" id='revenue_last_month'>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Profit this month -->
+
+                                            </div>
+                                            <div class="row ">
+                                                <div class="col-md-12 col-lg-6 ">
+                                                    <div class="card border-left-primary shadow h-100 py-2">
+                                                        <div class="card-body">
+                                                            <div class="row no-gutters align-items-center">
+                                                                <div class="col mr-2">
+                                                                    <div
+                                                                        class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                                        Profit (this month)</div>
+                                                                    <div class="h5 mb-0 font-weight-bold text-gray-800 text-center tt"
+                                                                        id='profit_this_month' title=""
+                                                                        style="cursor: pointer;"
+                                                                        data-placement="bottom">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Profit last month -->
+                                                <div class="col-md-12 col-lg-6 ">
+                                                    <div class="card border-left-success shadow h-100 py-2">
+                                                        <div class="card-body">
+                                                            <div class="row no-gutters align-items-center">
+                                                                <div class="col mr-2">
+                                                                    <div
+                                                                        class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                                        Profit (last month)</div>
+                                                                    <div class="h5 mb-0 font-weight-bold text-gray-800 tt text-center"
+                                                                        id='profit_last_month' title=""
+                                                                        style="cursor: pointer;"
+                                                                        data-placement="bottom">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Gauge -->
+                        <div class="col-lg-8 col-md-12">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card shadow mb-4">
+                                        <!-- Card Body -->
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-6 col-sm-12 ">
+                                                    <div id="gauge_proccessA_FPY">
+
+                                                    </div>
+                                                    <hr class="my-0 mx-5">
+                                                    <div class="h5 text-center text-dark">Process A FPY</div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-12 ">
+                                                    <div id="gauge_proccessB_FPY">
+
+                                                    </div>
+                                                    <hr class="my-0  mx-5">
+                                                    <div class="h5 text-center text-dark">Process B FPY</div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-12 ">
+                                                    <div id="gauge_proccessC_FPY">
+
+                                                    </div>
+                                                    <hr class="my-0  mx-5">
+                                                    <div class="h5 text-center text-dark">Process C FPY</div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-12 ">
+                                                    <div id="gauge_RTY">
+
+                                                    </div>
+                                                    <hr class="my-0  mx-5">
+                                                    <div class="h5 text-center text-dark">RTY</div>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-6 col-sm-12 tt" data-placement="bottom"
+                                                    title="Click for details">
+                                                    <div id="gauge_defectRate">
+
+                                                    </div>
+                                                    <hr class="my-0  mx-5">
+                                                    <div class="h5 text-center text-dark">Defect Rate</div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-12 tt" data-placement="bottom"
+                                                    title="Click for details">
+                                                    <div id="gauge_output">
+
+                                                    </div>
+                                                    <hr class="my-0  mx-5">
+                                                    <div class="h5 text-center text-dark ">Output</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- Revenue and Profit cards -->
+
+
+
+
+
+                    <!-- Content Row -->
+                    <!-- Financial Boards & Downtime PieCharts-->
+                    <!-- charts -->
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <!-- Downtime Chart -->
+                                <div class="col-lg-3 col-md-5 col-sm-12">
+                                    <div class="card shadow mb-4">
+                                        <!-- Card Header - Dropdown -->
+                                        <div class=" card-body">
+                                            <div class="tab-content">
+                                                <!-- Monthly Chart -->
+                                                <div class=" tab-pane fade" id="overall_chart_doughnut_downtime"
+                                                    role="tabpanel" aria-labelledby="overall-chart-downtime">
+                                                    <h6 class="m-0 font-weight-bold text-primary">Overall Downtime</h6>
+                                                    <div class="chart-line  pt-4 pb-2">
+                                                        <canvas id="chart_doughnut_dynamic_tab_overall"></canvas>
+                                                    </div>
+                                                </div>
+                                                <!-- Daily Chart -->
+                                                <div class="tab-pane fade active show"
+                                                    id="this_month_chart_doughnut_downtime" role="tabpanel"
+                                                    aria-labelledby="this-month-chart-downtime">
+                                                    <h6 class="m-0 font-weight-bold text-primary">Downtime this month
+                                                    </h6>
+                                                    <div class="chart-line  pt-4 pb-2">
+                                                        <canvas id="chart_doughnut_dynamic_tab_this_month"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Tab footer -->
+                                        <div class="card-footer border-0 p-0 pb-2" style=" background-color: f8f9fc;">
+                                            <ul class=" nav nav-tabs tabs-below justify-content-end"
+                                                id="chart_doughnut_downtime_tab">
+
+                                                <li class="nav-item  text-center">
+                                                    <a href="#overall_chart_doughnut_downtime" class="nav-link "
+                                                        role="tab" data-toggle="tab"
+                                                        id="chart_tab_doughnut_btn_second">Overall</a>
+                                                </li>
+                                                <li class="nav-item text-center active">
+                                                    <a href="#this_month_chart_doughnut_downtime"
+                                                        class="nav-link active " role="tab" data-toggle="tab"
+                                                        id="chart_tab_doughnut_btn_first">This
+                                                        month</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9 col-md-7 col-sm-12">
+                                    <!-- Dynamic Charts -->
+                                    <div class="row" id='chart_dynamic'>
+
+                                        <div class="col">
+                                            <div class="card shadow mb-4">
+                                                <div class="card-body">
+
+                                                    <div class="tab-content" id="chart_dynamic_content">
+                                                        <!-- Monthly Chart -->
+                                                        <div class="tab-pane fade" id="monthly_chart" role="tabpanel"
+                                                            aria-labelledby="monthly-chart-tab">
+                                                            <h6 class="m-0 font-weight-bold text-primary"
+                                                                id="chart_dynamic_tab_three_title">
+                                                                Monthly downtime</h6>
+                                                            <div class="chart-line  pt-4 pb-2" style="height: 75vh;">
+                                                                <canvas id="chart_dynamic_tab_three"></canvas>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Daily Chart -->
+                                                        <div class="tab-pane fade show active " id="daily_chart"
+                                                            role="tabpanel" aria-labelledby="daily-chart-tab">
+                                                            <h6 class="m-0 font-weight-bold text-primary"
+                                                                id="chart_dynamic_tab_two_title">Daily
+                                                                downtime
+                                                            </h6>
+                                                            <div class="chart-line  pt-4 pb-2" style="height: 75vh;">
+                                                                <canvas id="chart_dynamic_tab_two"></canvas>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Live Chart -->
+                                                        <div class="tab-pane fade  " id="live_chart" role="tabpanel"
+                                                            aria-labelledby="live-chart-tab">
+                                                            <h6 class="m-0 font-weight-bold text-primary"
+                                                                id="chart_dynamic_tab_one_title">Live
+                                                            </h6>
+                                                            <div class="chart-line  pt-4 pb-2" style="height: 75vh;">
+                                                                <canvas id="chart_dynamic_tab_one"></canvas>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <!-- Tab footer -->
+                                                <div class="card-footer border-0 p-0 pb-2"
+                                                    style=" background-color: f8f9fc;">
+                                                    <ul class=" nav nav-tabs tabs-below justify-content-end"
+                                                        id="chart_downtime_tab">
+
+                                                        <li class="nav-item  text-center" style="width: 15%;">
+                                                            <a href="#monthly_chart" class="nav-link " role="tab"
+                                                                data-toggle="tab" id="chart_tab_btn_third">Monthly</a>
+                                                        </li>
+                                                        <li class="nav-item text-center" style="width: 15%;">
+                                                            <a href="#daily_chart" class="nav-link active " role="tab"
+                                                                data-toggle="tab" id="chart_tab_btn_second">Daily</a>
+                                                        </li>
+                                                        <li class="nav-item text-center d-none" style="width: 15%;">
+                                                            <a href="#live_chart" class="nav-link  " role="tab"
+                                                                data-toggle="tab" id="chart_tab_btn_first">Live</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Area Chart -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Tables -->
+                    <!-- Effectiveness & Revenue/Cost -->
+                    <div class="row">
+                        <!-- Effectiveness -->
+                        <div class="col-lg-6 col-md-12 mb-4">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary tt" style="cursor: default;"
+                                        title="Performance x Quality x Availability" data-placement="top">Effectiveness
+                                    </h6>
+
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body table-card card-table-small" id="production_table">
+                                    <table class="table table-striped table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style="width: 25%"></th>
+                                                <th scope="col" style="width: 25%">YTD</th>
+                                                <th scope="col" style="width: 25%">Current Month</th>
+                                                <th scope="col" style="width: 25%">Previous Month</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="table-success" id="effectiveness_table_oee">
+                                                <th scope="row" class="tt"
+                                                    title="Availability = Actual Production Time/ Scheduled Time"
+                                                    data-placement="bottom">OEE</th>
+                                                <td class="tt" title="Click for details" data-placement="bottom"></td>
+                                                <td class="tt" title="Click for details" data-placement="bottom"></td>
+                                                <td class="tt" title="Click for details" data-placement="bottom"></td>
+                                            </tr>
+                                            <tr class="table-info" id="effectiveness_table_ooe">
+                                                <th scope="row" class="tt"
+                                                    title="Availability = Actual Production Time/ Operating Time"
+                                                    data-placement="bottom">OOE</th>
+                                                <td class="tt" data-placement="bottom" title="Click for details"></td>
+                                                <td class="tt" data-placement="bottom" title="Click for details"></td>
+                                                <td class="tt" data-placement="bottom" title="Click for details"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Cost & Rev -->
+                        <div class="col-lg-6 col-md-12 mb-4">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary" style="cursor: default;">Cost/Revenue
+                                    </h6>
+
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body card-table-small" id="cost_revenue_table">
+                                    <table class="table table-striped table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style="width: 25%"></th>
+                                                <th scope="col" style="width: 25%">YTD</th>
+                                                <th scope="col" style="width: 25%">Current Month</th>
+                                                <th scope="col" style="width: 25%">Previous Month</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="table-success" id="cost_revenue_table_revenue">
+                                                <th scope="row">REVENUE</th>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                            </tr>
+                                            <tr class="table-info" id="cost_revenue_table_cost">
+                                                <th scope="row">COST</th>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Productiontime &  Performance -->
+                    <div class="row">
+                        <!-- Productiontime -->
+                        <div class="col-lg-6 col-md-12 mb-4">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary" style="cursor: default;">Production
+                                        time</h6>
+
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body card-table-big" id="production_table">
+                                    <table class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style="width: 25%"></th>
+                                                <th scope="col" style="width: 25%">YTD</th>
+                                                <th scope="col" style="width: 25%">Current Month</th>
+                                                <th scope="col" style="width: 25%">Previous Month</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="table-success" id="production_table_productiontime">
+                                                <th scope="row">PRODUCTION TIME</th>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                            </tr>
+                                            <tr class="table-info" id="production_table_operatingtime">
+                                                <th scope="row">OPERATING TIME</th>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                            </tr>
+                                            <tr class="table-success" id="production_table_downtime">
+                                                <th scope="row">DOWNTIME</th>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Performance -->
+                        <div class="col-lg-6 col-md-12 mb-4">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Performance</h6>
+
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body card-table-big" id="performance_table">
+                                    <table class="table table-striped table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style="width: 25%"></th>
+                                                <th scope="col" style="width: 25%">YTD</th>
+                                                <th scope="col" style="width: 25%">Current Month</th>
+                                                <th scope="col" style="width: 25%">Previous Month</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="table-success" id="performance_table_productionVolume">
+                                                <th scope="row">PRODUCTION
+                                                    VOLUME</th>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                                <td class="tt" title="" data-placement="bottom"></td>
+                                            </tr>
+                                            <tr class="table-info" id="performance_table_quality">
+                                                <th scope="row">QUALITY</th>
+                                                <td class="tt" title="Click for details" data-placement="bottom"></td>
+                                                <td class="tt" title="Click for details" data-placement="bottom"></td>
+                                                <td class="tt" title="Click for details" data-placement="bottom"></td>
+                                            </tr>
+                                            <tr class="table-success" id="performance_table_performance">
+                                                <th scope="row">PERFORMANCE</th>
+                                                <td class="tt" title="Click for details" data-placement="bottom"></td>
+                                                <td class="tt" title="Click for details" data-placement="bottom"></td>
+                                                <td class="tt" title="Click for details" data-placement="bottom"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+            <!-- Modals -->
+            <%- include('./partials/logoutModal.ejs') %>
+            <!-- Footer -->
+            <%- include('./partials/footer.ejs') %>
+            <!-- End of Footer -->
+
+        </div>
+        <%- include('./partials/publicAssets.ejs') %>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/moment@^2"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-moment/1.0.0/chartjs-adapter-moment.min.js"
+        integrity="sha512-oh5t+CdSBsaVVAvxcZKy3XJdP7ZbYUBSRCXDTVn0ODewMDDNnELsrG9eDm8rVZAQg7RsDD/8K3MjPAFB13o6eA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming@2.0.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"
+        integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.2.0/chartjs-plugin-zoom.min.js"
+        integrity="sha512-TT0wAMqqtjXVzpc48sI0G84rBP+oTkBZPgeRYIOVRGUdwJsyS3WPipsNh///ay2LJ+onCM23tipnz6EvEy2/UA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="//cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script> -->
+    <script type="module" src="./public/js/dashboardIO.js"></script>
+    <!-- <script type="module" src="./public/js/display.js"></script> -->
+</body>
+
+</html>

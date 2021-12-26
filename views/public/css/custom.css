@@ -1,0 +1,48 @@
+.table td,th{
+    text-align: center;
+    vertical-align: middle;
+  }
+  .tabs-below {
+    border-bottom-width: 0px;
+    border-top: 1px solid #dee2e6;
+  }
+  .tooltip{
+    font-size: 0.75rem;
+ }
+ .tooltip-inner {
+  white-space:pre-wrap;
+}
+  .tabs-below .nav-link {
+      border: 1px solid transparent;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: .25rem;
+      border-bottom-right-radius: .25rem;
+  }
+  
+  .tabs-below .nav-item {
+    margin-bottom: 0px;
+    margin-top: -1px;
+  }
+  tr {
+    cursor: pointer;
+  }
+  .tabs-below .nav-item.show .nav-link, .tabs-below .nav-link.active {
+    border-color: #fff #dee2e6 #dee2e6  #dee2e6;
+  }
+  .nav-link .active{
+    background-color: #fff;
+  }
+  @media (max-width:1537px) and (min-width:1200px){
+    .card-table-small{
+      height: 255px;
+    }
+  }
+  @media (max-width:1526px) and (min-width:1199px){
+    .card-table-big{
+      height: 310px;
+    }
+  }
+
+  
+  

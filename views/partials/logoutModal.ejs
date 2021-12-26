@@ -1,0 +1,19 @@
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Do you want to sign out ?</h5>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <form action="/users/logout?_method=DELETE" method="POST">
+                    <!-- <a class="btn btn-danger" data-dismiss="modal" href="/users/logout" id="btn-logout">Yes</a> -->
+                    <!-- <a class="btn btn-danger" data-dismiss="modal" href="/users/logout" id="btn-logout">Yes</a> -->
+
+                    <button class="btn btn-danger" data-dismiss="modal" href="/users/logout" type='submit'
+                        id="btn-logout">Yes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
