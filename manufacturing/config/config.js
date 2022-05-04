@@ -42,5 +42,5 @@ exports.price = {
 
 exports.sequenceInterval = 60000;
 exports.downReasons = ['uncategozied', 'other', 'service', 'brokenMachine'];
-// exports.mongoUri = 'mongodb://127.0.0.1:27017/'
-exports.mongoUri = 'mongodb+srv://thluon-dashboard:dashboard-123@cluster0.2usxu.mongodb.net/'
+exports.mongoUri = 'mongodb://127.0.0.1:27017/'
+// exports.mongoUri = 'mongodb+srv://thluon-dashboard:dashboard-123@cluster0.2usxu.mongodb.net/'
