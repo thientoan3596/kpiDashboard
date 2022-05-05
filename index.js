@@ -3,8 +3,10 @@ const moment = require('moment');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
 const fs = require('fs');
-const port = process.env.PORT || 8035;
+const port = process.env.PORT || 80;
 const { log } = require('./log');
+// heroku
+// const host = 'http://42.116.113.111';
 // const host
 // let host = 'https://dashboard-thluon.herokuapp.com';
 // let devHost = 'https://localhost';
